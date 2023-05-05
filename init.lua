@@ -117,6 +117,24 @@ require('lazy').setup({
     },
   },
 
+  {
+    -- Catppuccin theme
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('catppuccin').setup({
+        flavour = 'macchiato',
+        background = {
+          light = "latte",
+          dark = "mocha",
+        },
+      })
+      vim.cmd.colorscheme('catppuccin')
+    end
+  },
+
   -- {
   --   -- Rose-pine theme
   --   'rose-pine/neovim',
@@ -129,54 +147,6 @@ require('lazy').setup({
   --   end
   -- },
 
-  -- {
-  --   -- Gruvbox theme
-  --   'ellisonleao/gruvbox.nvim',
-  --   name = 'gruvbox',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('gruvbox').setup({
-  --       -- transparent_mode = true,
-  --     })
-  --     vim.cmd.colorscheme('gruvbox')
-  --   end
-  -- },
-
-  {
-    -- Kanagawa theme
-    'rebelot/kanagawa.nvim',
-    name = 'kanagawa',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('kanagawa').setup({
-        compile = false,  -- enable compiling the colorscheme
-        undercurl = true, -- enable undercurls
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = { italic = true },
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = true,    -- do not set background color
-        dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
-        terminalColors = true, -- define vim.g.terminal_color_{0,17}
-        colors = {
-          -- add/modify theme and palette colors
-          palette = {},
-          theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-        },
-        theme = "wave", -- Load "wave" theme when 'background' option is not set
-        background = {
-          -- map the value of 'background' option to a theme
-          dark = "wave", -- try "dragon" !
-          light = "lotus"
-        },
-      })
-      vim.cmd.colorscheme('kanagawa')
-    end
-  },
-
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -184,7 +154,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'kanagawa', -- don't forget to match the theme!
+        theme = 'catppuccin', -- don't forget to match the theme!
         component_separators = '|',
         section_separators = '',
       },
